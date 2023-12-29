@@ -12,19 +12,17 @@ public class StringSplitter {
      * @return List of substrings
      */
     public static List<String> splitByDelimiters(String source, Collection<String> delimiters) {
+        List<String> stringList = new ArrayList<>();
         StringJoiner delim = new StringJoiner("|", "[", "]");
         for (String s : delimiters) {
             delim.add(s);
         }
-        return Arrays.asList(source.split(delim.toString()));
-    }
 
-    public static void main(String[] args) {
-        List<String> s = new ArrayList<>();
-        s.add("d");
-        s.add("c");
-        s.add(")");
-
-        splitByDelimiters("", s);
+        for (String s: source.split(delim.toString())){
+           if (!s.equals("")){
+               stringList.add(s);
+           }
+        }
+        return stringList;
     }
 }
